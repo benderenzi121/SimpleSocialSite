@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+   <title>Star Social</title>
+
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+   integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+   <!-- Optional theme -->
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+
+   <!-- Alternative to Bootstrap 3 Glyphicons -->
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+   <link rel="stylesheet" href="{% static 'simplesocial/css/master.css' %}">
+  </head>
+  <body>
+    <nav class = 'navbar mynav navbar-dark navbar-expand-lg bg-dark' role = 'navigation' id = 'navbar'>
+      <div class="container">
+        <a href="{% url 'home' %}" class = 'navbar-brand mynav'>SiteHome</a>
+        <ul class = 'nav navbar-nav navbar-right'>
+          {% if user.is_authenticated %}
+          <li class = 'nav-item'><a class="nav-link" href="{% url 'posts:create' %}">Post</a></li>
+
+          <li><a class="nav-link" href="{% url 'groups:all' %}">Groups</a> </li>
+
+          <li><a class="nav-link" href="{% url 'groups:create'%}">Create Group</a></li>
+
+          <li>  <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a></li>
+          {% else %}
+          <li><a class="nav-link" href="{% url 'groups:all' %}">groups</a></li>
+
+          <li><a class="nav-link" href="{% url 'accounts:login' %}">login</a></li>
+
+          <li><a class="nav-link" href="{% url 'accounts:signup' %}">signup</a>  </li>
+          {% endif %}
+        </ul>
+
+      </div>
+    </nav>
+    <div class="container mycontent" style = 'margin-top:40px;'>
+      {% block content %}
+
+      {% endblock %}
+        </div>
+  </body>
+</html>

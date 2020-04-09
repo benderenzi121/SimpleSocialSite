@@ -1,0 +1,14 @@
+.mycontent{
+  padding-top: 100px;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow-y : auto;
+  background: #AFAFAF;
+  margin: 0;
+}
+.post-content{
+  text-align: center;
+}
